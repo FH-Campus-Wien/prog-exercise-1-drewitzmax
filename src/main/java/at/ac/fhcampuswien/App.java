@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -81,7 +83,22 @@ public class App {
 
     //todo Task 10
     public void transposedNumbers(){
-        // input your solution here
+        try(Scanner scanner = new Scanner(System.in)){
+            System.out.print("Number: ");
+            int number = scanner.nextInt();
+            List<Integer> cifers = new ArrayList<>();
+            while(number > 0){
+                cifers.add(number % 10);
+                number = number / 10;
+            }
+            for(int num: cifers){
+                System.out.print(num);
+            }
+            System.out.println();
+        } catch (Exception e){
+            System.out.println("An unexpected Exception occured pls only type integers");
+            e.printStackTrace();
+        }
     }
 
 
