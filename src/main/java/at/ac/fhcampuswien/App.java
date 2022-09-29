@@ -25,7 +25,17 @@ public class App {
 
     //todo Task 3
     public void sumOfLiterals(){
-        // input your solution here
+        char character = 'Z';
+        int integer = 0xface;
+        int integerTwo = 012;
+        long longInteger = 80L;
+        float floatingpointNumber = 44e-1f;
+        float floatingpointNumberTwo = 5.5f;
+        double longFloatingPointNumber = 8.88e1;
+        double longFloatingPointNumberTwo = 99.9;
+        int res = character + integer + integerTwo +(int) longInteger + (int) floatingpointNumber +
+                (int) floatingpointNumberTwo + (int) longFloatingPointNumber + (int) longFloatingPointNumberTwo;
+        System.out.println(res);
     }
 
     //todo Task 4
