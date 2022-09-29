@@ -40,7 +40,22 @@ public class App {
 
     //todo Task 4
     public void addTwoNumbers(){
-        // input your solution here
+        int numberAmount = 2;
+        int[] numbers = new int[numberAmount];
+        try(Scanner scanner = new Scanner(System.in)) {
+            for(int i=0; i < numbers.length; i++){
+                numbers[i] = scanner.nextInt();
+            }
+        }catch (Exception e){
+            System.out.println("An unexpected Exception occured pls only type integers");
+            e.printStackTrace();
+        }
+        int res = 0;
+        for(int number: numbers){
+            res += number;
+        }
+
+        System.out.println(res);
     }
 
     //todo Task 5
