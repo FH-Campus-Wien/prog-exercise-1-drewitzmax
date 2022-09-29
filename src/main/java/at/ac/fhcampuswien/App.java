@@ -41,15 +41,7 @@ public class App {
     //todo Task 4
     public void addTwoNumbers(){
         int numberAmount = 2;
-        int[] numbers = new int[numberAmount];
-        try(Scanner scanner = new Scanner(System.in)) {
-            for(int i=0; i < numbers.length; i++){
-                numbers[i] = scanner.nextInt();
-            }
-        }catch (Exception e){
-            System.out.println("An unexpected Exception occured pls only type integers");
-            e.printStackTrace();
-        }
+        int[] numbers = this.getAmountOfNumbers(numberAmount, false);
         int res = 0;
         for(int number: numbers){
             res += number;
@@ -60,7 +52,11 @@ public class App {
 
     //todo Task 5
     public void swapTwoNumbers(){
-        // input your solution here
+        System.out.println("Before Swap:");
+        int[] numbers = this.getAmountOfNumbers(2, true);
+        this.swapTwoNumberArr(numbers);
+        System.out.println("After Swap:");
+        this.printIntArr(numbers);
     }
 
     //todo Task 6
@@ -121,5 +117,40 @@ public class App {
 
         System.out.println("\nTask 10: Transposed Numbers");
         exercise1.transposedNumbers();
+    }
+
+    private int[]getAmountOfNumbers(int amount, boolean printVar){
+        int[] numbers = new int[amount];
+        char varName = 'x';
+        try(Scanner scanner = new Scanner(System.in)) {
+            for(int i=0; i < numbers.length; i++){
+                if(printVar){
+                    System.out.print(varName + ": ");
+                    varName++;
+                }
+                numbers[i] = scanner.nextInt();
+            }
+        }catch (Exception e){
+            System.out.println("An unexpected Exception occured pls only type integers");
+            e.printStackTrace();
+        }
+        return numbers;
+    }
+
+    private void printIntArr(int[] arr){
+        char varName = 'x';
+        for(int num: arr){
+            System.out.println(varName + ": " + num);
+            varName++;
+        }
+    }
+
+    private void swapTwoNumberArr(int[] arr){
+        if(arr.length < 2){
+            throw new IllegalArgumentException("Array has to have at least two Numbers");
+        }
+        arr[0] = arr[0] + arr[1];
+        arr[1] = arr[0] - arr[1];
+        arr[0] = arr[0] - arr[1];
     }
 }
