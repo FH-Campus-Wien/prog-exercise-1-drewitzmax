@@ -7,12 +7,12 @@ import java.util.Scanner;
 public class App {
 
     //todo Task 1
-    public void sayHelloWorld(){
+    public void sayHelloWorld() {
         System.out.println("Hello World!");
     }
 
     //todo Task 2
-    public void helloRobot(){
+    public void helloRobot() {
         System.out.println("0123456789012345678901");
         System.out.println("         __");
         System.out.println(" _(\\    |@@|");
@@ -26,7 +26,7 @@ public class App {
     }
 
     //todo Task 3
-    public void sumOfLiterals(){
+    public void sumOfLiterals() {
         char character = 'Z';
         int integer = 0xface;
         int integerTwo = 012;
@@ -35,17 +35,17 @@ public class App {
         float floatingpointNumberTwo = 5.5f;
         double longFloatingPointNumber = 8.88e1;
         double longFloatingPointNumberTwo = 99.9;
-        int res = character + integer + integerTwo +(int) longInteger + (int) floatingpointNumber +
+        int res = character + integer + integerTwo + (int) longInteger + (int) floatingpointNumber +
                 (int) floatingpointNumberTwo + (int) longFloatingPointNumber + (int) longFloatingPointNumberTwo;
         System.out.println(res);
     }
 
     //todo Task 4
-    public void addTwoNumbers(){
+    public void addTwoNumbers() {
         int numberAmount = 2;
         int[] numbers = this.getAmountOfNumbers(numberAmount, false);
         int res = 0;
-        for(int number: numbers){
+        for (int number : numbers) {
             res += number;
         }
 
@@ -53,7 +53,7 @@ public class App {
     }
 
     //todo Task 5
-    public void swapTwoNumbers(){
+    public void swapTwoNumbers() {
         System.out.println("Before Swap:");
         int[] numbers = this.getAmountOfNumbers(2, true);
         this.swapTwoNumberArr(numbers);
@@ -62,47 +62,57 @@ public class App {
     }
 
     //todo Task 6
-    public void compareTwoNumbers(){
-        // input your solution here
+    public void compareTwoNumbers() {
+        int[] numbers = this.getAmountOfNumbers(2, true, 'n', true, 1);
+        int diff = numbers[0] - numbers[1];
+        if (diff == 0) {
+            System.out.println("n1 == n2");
+        }
+        if (diff < 0) {
+            System.out.println("n2 > n1");
+        }
+        if (diff > 0) {
+            System.out.println("n1 > n2");
+        }
     }
 
     //todo Task 7
-    public void ratingSalesPerson(){
+    public void ratingSalesPerson() {
         // input your solution here
     }
 
     //todo Task 8
-    public void getCommissionRate(){
+    public void getCommissionRate() {
         // input your solution here
     }
 
     //todo Task 9
-    public void leapyear(){
+    public void leapyear() {
         // input your solution here
     }
 
     //todo Task 10
-    public void transposedNumbers(){
-        try(Scanner scanner = new Scanner(System.in)){
+    public void transposedNumbers() {
+        try (Scanner scanner = new Scanner(System.in)) {
             System.out.print("Number: ");
             int number = scanner.nextInt();
             List<Integer> cifers = new ArrayList<>();
-            while(number > 0){
+            while (number > 0) {
                 cifers.add(number % 10);
                 number = number / 10;
             }
-            for(int num: cifers){
+            for (int num : cifers) {
                 System.out.print(num);
             }
             System.out.println();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("An unexpected Exception occured pls only type integers");
             e.printStackTrace();
         }
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         App exercise1 = new App();
 
         System.out.println("Task 1: Say Hello World");
@@ -136,34 +146,48 @@ public class App {
         exercise1.transposedNumbers();
     }
 
-    private int[]getAmountOfNumbers(int amount, boolean printVar){
+    private int[] getAmountOfNumbers(int amount) {
+        return getAmountOfNumbers(amount, false);
+    }
+
+    private int[] getAmountOfNumbers(int amount, boolean printVar) {
+        return this.getAmountOfNumbers(amount, printVar, 'x', false, 0);
+    }
+
+    private int[] getAmountOfNumbers(int amount, boolean printVar, char baseChar, boolean enumerate, int baseNumber) {
         int[] numbers = new int[amount];
-        char varName = 'x';
-        try(Scanner scanner = new Scanner(System.in)) {
-            for(int i=0; i < numbers.length; i++){
-                if(printVar){
-                    System.out.print(varName + ": ");
-                    varName++;
+        char varName = baseChar;
+        int varNumber = baseNumber;
+        try (Scanner scanner = new Scanner(System.in)) {
+            for (int i = 0; i < numbers.length; i++) {
+                if (printVar) {
+                    if (enumerate) {
+                        System.out.print("" + varName + varNumber + ": ");
+                        varNumber++;
+                    } else {
+                        System.out.print(varName + ": ");
+                        varName++;
+                    }
                 }
                 numbers[i] = scanner.nextInt();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("An unexpected Exception occured pls only type integers");
             e.printStackTrace();
         }
         return numbers;
     }
 
-    private void printIntArr(int[] arr){
+    private void printIntArr(int[] arr) {
         char varName = 'x';
-        for(int num: arr){
+        for (int num : arr) {
             System.out.println(varName + ": " + num);
             varName++;
         }
     }
 
-    private void swapTwoNumberArr(int[] arr){
-        if(arr.length < 2){
+    private void swapTwoNumberArr(int[] arr) {
+        if (arr.length < 2) {
             throw new IllegalArgumentException("Array has to have at least two Numbers");
         }
         arr[0] = arr[0] + arr[1];
