@@ -98,7 +98,20 @@ public class App {
 
     //todo Task 8
     public void getCommissionRate() {
-        // input your solution here
+        int comissionClass = 0;
+        double comissionRate;
+        System.out.print("Enter CommissionClass: ");
+        try(Scanner scanner = new Scanner(System.in)){
+            comissionClass = scanner.nextInt();
+        }catch (Exception e){}
+        switch (comissionClass){
+            case 1: comissionRate = 0.01; break;
+            case 2: comissionRate = 0.02; break;
+            case 3: comissionRate = 0.03; break;
+            case 4: comissionRate = 0.04; break;
+            default: comissionRate = 0.00;
+        }
+        System.out.println(String.format("Your Commission Rate was set to %.2f", comissionRate));
     }
 
     //todo Task 9
