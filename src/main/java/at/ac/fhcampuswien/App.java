@@ -1,8 +1,6 @@
 package at.ac.fhcampuswien;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
 
@@ -78,7 +76,24 @@ public class App {
 
     //todo Task 7
     public void ratingSalesPerson() {
-        // input your solution here
+        try{
+            int rev = this.readSalesNumbers();
+            if(rev < 20000){
+                System.out.println("Poor Sales Revenue");
+                return;
+            }
+            if(rev < 50000){
+                System.out.println("Average Sales Revenue");
+                return;
+            }
+            if(rev < 80000){
+                System.out.println("Good Sales Revenue");
+                return;
+            }
+            System.out.println("Excellent Sales Revenue");
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     //todo Task 8
@@ -193,5 +208,22 @@ public class App {
         arr[0] = arr[0] + arr[1];
         arr[1] = arr[0] - arr[1];
         arr[0] = arr[0] - arr[1];
+    }
+
+    private int readSalesNumbers(){
+        System.out.print("Enter annual Revenue: ");
+        try(Scanner scanner = new Scanner(System.in)){
+            int rev = scanner.nextInt();
+            if(rev < 0 || rev >= 100000){
+                throw new IllegalArgumentException("Invalid Revenue");
+            }
+            return rev;
+        } catch (InputMismatchException e){
+            throw new IllegalArgumentException("Invalid Revenue");
+        }catch (NoSuchElementException e){
+            throw new IllegalArgumentException("Invalid Revenue");
+        }catch (IllegalStateException e){
+            throw new IllegalArgumentException("Invalid Revenue");
+        }
     }
 }
