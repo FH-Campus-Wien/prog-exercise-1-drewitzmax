@@ -116,7 +116,19 @@ public class App {
 
     //todo Task 9
     public void leapyear() {
-        // input your solution here
+        System.out.print("Year: ");
+        boolean isLeapYear;
+        try(Scanner scanner = new Scanner(System.in)){
+            int year = scanner.nextInt();
+            isLeapYear = this.isLeapYear(year);
+        } catch (Exception e){
+            isLeapYear = false;
+        }
+        if(isLeapYear){
+            System.out.println("Leapyear");
+        }else {
+            System.out.println("Not a Leapyear");
+        }
     }
 
     //todo Task 10
@@ -238,5 +250,9 @@ public class App {
         }catch (IllegalStateException e){
             throw new IllegalArgumentException("Invalid Revenue");
         }
+    }
+
+    private boolean isLeapYear(int year){
+        return year % 4 == 0 && !((year % 100 == 0) && (year % 400 != 0));
     }
 }
